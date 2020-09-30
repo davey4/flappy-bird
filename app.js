@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     bird.style.bottom = birdBottom + "px";
     bird.style.left = birdLeft + "px";
   }
-  letTimerId = setInterval(startGame, 20);
+  let TimerId = setInterval(startGame, 20);
 
   function control(e) {
     if (e.keyCode === 32) {
@@ -29,12 +29,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function generateObstacle() {
     let obstacleLeft = 500;
-    let obstacleBottom = 150;
+    let randomHeight = Math.random() * 60;
+    let obstacleBottom = randomHeight;
     const obstacle = document.createElement("div");
     obstacle.classList.add("obstacle");
     gameDisplay.appendChild(obstacle);
     obstacle.style.left = obstacleLeft + "px";
     obstacle.style.bottom = obstacleBottom + "px";
+
+    function moveObstacle() {
+      obstacleLeft -= 2;
+      obstacle.style.left = obstacleLeft + "px";
+    }
+    let timerId = setInterval(moveObstacle, 20);
   }
   generateObstacle();
 });
