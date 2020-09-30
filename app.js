@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let birdBottom = 100;
   let gravity = 2;
   let isGameOver = false;
-  let gap = 400;
+  let gap = 450;
 
   function startGame() {
     birdBottom -= gravity;
@@ -60,7 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
         (obstacleLeft > 200 &&
           obstacleLeft < 280 &&
           birdLeft === 220 &&
-          birdBottom < obstacleBottom + 153) ||
+          (birdBottom < obstacleBottom + 153 ||
+            birdBottom > obstacleBottom + gap - 200)) ||
         birdBottom === 0
       ) {
         gameOver();
